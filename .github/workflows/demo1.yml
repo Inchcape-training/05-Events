@@ -3,8 +3,14 @@ on:
   pull_request:
     types: # single or list like this -> [opened,edited] or like below
       - opened
-      - closed
+#       - closed
   workflow_dispatch: # or use multiple triggers
+  push:
+    branches: # filters
+      - main
+      - dev
+      - 'dev-*'   # dev-new, dev-user-new
+      - 'feat/**'  # feat/dev, feat/user/dev, etc
 jobs:
   DeployJob:
     runs-on: ubuntu-latest
