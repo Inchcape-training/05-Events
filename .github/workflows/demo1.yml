@@ -1,18 +1,20 @@
-name: Deployment Ex 1
+name: Events Demo 01
 on: push
 jobs:
-  deploy:
+  DeployJob:
     runs-on: ubuntu-latest
     steps: 
-      - name: Get code
+      - name: Output event data step
+        run: echo "${{ toJSON(github.event) }}"
+      - name: Get code step
         uses: actions/checkout@v4
-      - name: Install dependencies
+      - name: Install dependencies step
         run: npm ci
-      - name: Lint
+      - name: Lint step
         run: npm run lint
-      - name: Test code
+      - name: Test code step
         run: npm run test
-      - name: Build project
+      - name: Build project step
         run: npm run build
-      - name: Deploy code
+      - name: Deploy code step
         run: echo "Deploying..."
